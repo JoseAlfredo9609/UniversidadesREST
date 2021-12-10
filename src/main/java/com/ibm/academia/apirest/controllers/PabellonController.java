@@ -33,6 +33,12 @@ public class PabellonController
 	@Autowired
 	private PabellonDAO pabellonDao;
 	
+	/**
+	 * Endpoint para buscar todos los objetos de tipo pabellon
+	 * @return Retorna una lista de objetos tipo pabellon
+	 * BadRequestException En caso de que falle buscando objetos de tipo pabellon
+	 * @author JAMR - 10/12/2021
+	 */
 	@GetMapping("/lista/pabellones")
 	public List<Pabellon> buscarTodas()
 	{
@@ -43,6 +49,13 @@ public class PabellonController
 		return pabellones;
 	}
 	
+	/**
+	 * Endpoint para buscar objetos de tipo pabellon por Id
+	 * @param pabellonId
+	 * @return Retorna un de objeto de tipo pabellon
+	 * BadRequestExceptioEn caso de que falle buscando objeto de tipo pabellon
+	 * @author JAMR - 10/12/2021
+	 */
 	@GetMapping("/id/{pabellonId}")
 	public Pabellon buscarPabellonPorId(@PathVariable Integer pabellonId)
 	{
@@ -93,6 +106,12 @@ public class PabellonController
 		return new ResponseEntity<Pabellon>(pabellonActualizado, HttpStatus.OK); 
 	}
 	
+	/**
+	 * Enpoint para eliminar un objeto tipo pabellon
+	 * @param pabellonId Parámetro para buscar el pabellon
+	 * @return Retorna un mensaje de objeto tipo pabellon eliminado
+	 * @NotFoundException En caso de que falle eliminando el objeto pabellon
+	 */
 	@DeleteMapping("/pabellonId/{pabellonId}")
 	public ResponseEntity<?> eliminarPabellon(@PathVariable Integer pabellonId)
 	{

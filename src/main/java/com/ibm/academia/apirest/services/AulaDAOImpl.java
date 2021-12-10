@@ -12,6 +12,14 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implement
 	@Autowired
 	public AulaDAOImpl(AulaRepository repository) {
 		super(repository);
+	}
+
+	@Override
+	public Aula actualizar(Aula aulaEncontrada, Aula aula) {
+		Aula aulaActualizada = null;
+		aulaEncontrada.setCantidadPupitres(aula.getCantidadPupitres());
+		aulaEncontrada.setPizarron(aula.getPizarron());
+		return aulaActualizada;
 	}	
 	
 }
