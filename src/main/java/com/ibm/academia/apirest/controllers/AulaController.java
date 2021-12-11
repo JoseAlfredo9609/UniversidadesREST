@@ -57,12 +57,12 @@ public class AulaController
 	 * author JAMR - 08/12/2021
 	 */
 	@GetMapping("/id/{aulaId}")
-	public ResponseEntity<?> buscarClientePorId(@PathVariable Integer clienteId) 
+	public ResponseEntity<?> buscarAulaPorId(@PathVariable Integer aulaId) 
 	{
-		Optional<Aula> oAula =  aulaDao.buscarPorId(clienteId);		
+		Optional<Aula> oAula =  aulaDao.buscarPorId(aulaId);		
 		
 		if(!oAula.isPresent())
-			throw new BadRequestException(String.format("El cliente con ID %d noexiste",clienteId));
+			throw new BadRequestException(String.format("El aula con ID %d noexiste",aulaId));
 		
 		return new ResponseEntity<Aula>(oAula.get(), HttpStatus.OK);
 	}
@@ -76,7 +76,7 @@ public class AulaController
 	 * author JAMR - 08/12/2021
 	 */
 	@PostMapping
-	public ResponseEntity<?> guardarCliente(@Valid @RequestBody Aula aula, BindingResult result) 
+	public ResponseEntity<?> guardarAula(@Valid @RequestBody Aula aula, BindingResult result) 
 	{
 		Map<String, Object> validaciones = new HashMap<String, Object>();
 		
@@ -102,7 +102,7 @@ public class AulaController
 	 * author JAMR - 08/12/2021
 	 */
 	@PutMapping("/upd/aulaId/{aulaId}")
-	public ResponseEntity<?> actualizarCliente(@PathVariable Integer aulaId, @RequestBody Aula aula )
+	public ResponseEntity<?> actualizarAula(@PathVariable Integer aulaId, @RequestBody Aula aula )
 	{
 		Optional<Aula> oAula = aulaDao.buscarPorId(aulaId);
 		
@@ -121,7 +121,7 @@ public class AulaController
 	 * author JAMR - 08/12/2021
 	 */
 	@DeleteMapping("/aulaId/{aulaId}")
-	public ResponseEntity<?> eliminarCarrera(@PathVariable Integer aulaId)
+	public ResponseEntity<?> eliminarAula(@PathVariable Integer aulaId)
 	{
 		Map<String, Object> respuesta = new HashMap<String, Object>();
 		

@@ -1,5 +1,7 @@
 package com.ibm.academia.apirest.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,5 +24,10 @@ public class PabellonDAOImpl extends GenericoDAOImpl<Pabellon, PabellonRepositor
 		Pabellon pabellonActualizado = null;
 		pabellonEncontrado.setNombre(pabellon.getNombre());
 		return pabellonActualizado;
+	}
+
+	@Override
+	public Optional<Pabellon> findPabellonBynombre(String nombre) {
+		return repository.findPabellonBynombre(nombre) ;
 	}
 }
